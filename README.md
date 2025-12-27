@@ -1,59 +1,213 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Data Normalisasi dengan PHP - Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi web pembelajaran normalisasi database menggunakan framework Laravel. Aplikasi ini menyediakan materi teori dan praktikum langsung untuk memahami konsep normalisasi database dari 1NF hingga BCNF.
 
-## About Laravel
+## 📋 Fitur Utama
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 🎓 Materi Teori
+- **1NF (First Normal Form)** - Eliminasi pengulangan data
+- **2NF (Second Normal Form)** - Dependensi fungsional penuh
+- **3NF (Third Normal Form)** - Dependensi transitif
+- **BCNF (Boyce-Codd Normal Form)** - Bentuk normal paling ketat
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 🛠️ Praktikum Interaktif
+- **1NF Praktikum**: Manajemen Produk dengan operasi CRUD
+- **2NF Praktikum**: Sistem Penjualan dengan relasi produk
+- **3NF Praktikum**: Manajemen Karyawan dan Departemen
+- **BCNF Praktikum**: Sistem Pendaftaran Kursus (Mahasiswa, Kursus, Pendaftaran)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🛡️ Keamanan & Validasi
+- Mass Assignment Protection
+- Form validation dengan error handling
+- CSRF protection
+- Input sanitization
 
-## Learning Laravel
+## 🚀 Persyaratan Sistem
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+- **PHP**: >= 8.1
+- **Composer**: >= 2.0
+- **Node.js**: >= 16.0 (untuk asset compilation)
+- **Database**: SQLite (default), MySQL, PostgreSQL
+- **Web Server**: Apache/Nginx dengan mod_rewrite
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 📦 Instalasi
 
-## Laravel Sponsors
+### 1. Clone Repository
+```bash
+git clone https://github.com/D4marp/Data-Normalisasi-dengan-PHP.git
+cd Data-Normalisasi-dengan-PHP
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 2. Install Dependencies PHP
+```bash
+composer install
+```
 
-### Premium Partners
+### 3. Install Dependencies Node.js (Opsional)
+```bash
+npm install
+npm run build
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 4. Konfigurasi Environment
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-## Contributing
+### 5. Setup Database
+```bash
+# Untuk SQLite (default)
+touch database/database.sqlite
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Jalankan migrasi
+php artisan migrate
 
-## Code of Conduct
+# (Opsional) Seed data contoh
+php artisan db:seed
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 6. Jalankan Aplikasi
+```bash
+php artisan serve
+```
 
-## Security Vulnerabilities
+Aplikasi akan berjalan di: `http://localhost:8000`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 📁 Struktur Proyek
 
-## License
+```
+├── app/
+│   ├── Http/Controllers/          # Controller untuk CRUD operations
+│   │   ├── ProductController.php
+│   │   ├── SaleController.php
+│   │   ├── EmployeeController.php
+│   │   ├── DepartmentController.php
+│   │   ├── CourseController.php
+│   │   ├── StudentController.php
+│   │   └── EnrollmentController.php
+│   └── Models/                    # Eloquent Models
+│       ├── Product.php
+│       ├── Sale.php
+│       ├── Employee.php
+│       ├── Department.php
+│       ├── Course.php
+│       ├── Student.php
+│       └── Enrollment.php
+├── database/
+│   ├── migrations/               # Database migrations
+│   └── seeders/                  # Database seeders
+├── resources/
+│   ├── views/
+│   │   ├── normalization/        # Halaman teori normalisasi
+│   │   └── crud/                 # Halaman CRUD praktikum
+│   └── routes/
+│       └── web.php              # Route definitions
+└── public/                      # Static assets
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🎯 Cara Penggunaan
+
+1. **Akses Halaman Utama**: Kunjungi `http://localhost:8000`
+2. **Pelajari Teori**: Klik menu navigasi untuk mempelajari konsep normalisasi
+3. **Lakukan Praktikum**: Gunakan tombol "Praktikum" untuk mencoba operasi CRUD
+4. **Kelola Data**: Tambah, edit, hapus data untuk memahami dampak normalisasi
+
+### Contoh Operasi CRUD
+
+#### 1NF - Manajemen Produk
+- Tambah produk baru
+- Edit informasi produk
+- Hapus produk
+- Lihat daftar produk
+
+#### 2NF - Sistem Penjualan
+- Kelola data penjualan
+- Relasi dengan tabel produk
+- Hitung total otomatis
+
+#### 3NF - Manajemen Karyawan
+- Data karyawan dan departemen
+- Relasi many-to-one
+- Eliminasi dependensi transitif
+
+#### BCNF - Sistem Kursus
+- Mahasiswa, Kursus, Pendaftaran
+- Relasi many-to-many
+- Bentuk normal tertinggi
+
+## 🔧 Konfigurasi Database
+
+### SQLite (Default)
+```env
+DB_CONNECTION=sqlite
+DB_DATABASE=/absolute/path/to/database/database.sqlite
+```
+
+### MySQL
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=normalisasi_db
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+
+### PostgreSQL
+```env
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=normalisasi_db
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+
+## 🧪 Testing
+
+```bash
+# Jalankan semua test
+php artisan test
+
+# Jalankan test spesifik
+php artisan test --filter=NamaTestClass
+```
+
+## 📚 Teknologi yang Digunakan
+
+- **Framework**: Laravel 12.x
+- **Database**: SQLite (default), MySQL, PostgreSQL
+- **Frontend**: Bootstrap 5.3.0, Blade Templates
+- **Authentication**: Laravel Sanctum (opsional)
+- **Validation**: Laravel Request Validation
+- **ORM**: Eloquent ORM
+
+## 🤝 Kontribusi
+
+1. Fork repository
+2. Buat branch fitur (`git checkout -b feature/AmazingFeature`)
+3. Commit perubahan (`git commit -m 'Add some AmazingFeature'`)
+4. Push ke branch (`git push origin feature/AmazingFeature`)
+5. Buat Pull Request
+
+## 📝 Lisensi
+
+Proyek ini menggunakan lisensi MIT - lihat file [LICENSE](LICENSE) untuk detail lebih lanjut.
+
+## 👨‍💻 Pengembang
+
+- **Nama**: [Nama Anda]
+- **Email**: [email@example.com]
+- **GitHub**: [@D4marp](https://github.com/D4marp)
+
+## 🙏 Acknowledgments
+
+- [Laravel Framework](https://laravel.com/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Font Awesome](https://fontawesome.com/)
+- Komunitas PHP Indonesia
+
+---
+
+**Catatan**: Aplikasi ini dibuat untuk tujuan pembelajaran normalisasi database. Pastikan untuk memahami konsep teori sebelum menggunakan fitur praktikum.
